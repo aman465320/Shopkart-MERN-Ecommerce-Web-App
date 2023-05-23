@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+
+@import "./components_styles/header.css";
+@import "./components_styles/footer.css";
+@import "./pages_styles/about.css";
+@import "./pages_styles/contact.css";
+@import "./pages_styles/error.css";
+@import "./pages_styles/home.css";
+@import "./pages_styles/policy.css";
+@import "./pages_styles/login.css";
+@import "./pages_styles/register.css";
+@import "./pages_styles/products.css";
+  /* font-family: 'Labrada', serif;
+font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif; */ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  min-height: 80vh;
+}
+
+/* --> navbar */
+
+/* admin */

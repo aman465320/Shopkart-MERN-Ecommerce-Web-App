@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+.footer {
+  color: white;
+  padding: 30px;
+  max-height: 15vh;
+  background-color: rgb(42, 40, 40);
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.footer a:hover {
+  color: rgb(163, 237, 217);
+  border-bottom: 2px solid rgb(163, 237, 217);
+}

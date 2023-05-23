@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+
+.filter-check {
+  font-weight: 500;
+}
+.radio-check {
+  font-weight: 500;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-button {
+  width: 35%;
+}
+
+.product-image {
+  height: 230px;
+  width: 260px;
+  object-fit: scale-down;
+}
+
+.price{
+  color: rgb(60, 177, 60);
+}
