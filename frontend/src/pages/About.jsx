@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-const About = ({title}) => {
+const About = ({ title }) => {
   return (
     <>
       <Helmet>
@@ -8,23 +8,28 @@ const About = ({title}) => {
         <title>{title} </title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div className="row contactus ">
-        <div className="col-md-6 ">
-          <img
-            src="/images/about.jpeg"
-            alt="contactus"
-            style={{ width: "100%" }}
-          />
-        </div>
-        <div className="col-md-4">
-          <p className="text-justify mt-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            officiis obcaecati esse tempore unde ratione, eveniet mollitia,
-            perferendis eius temporibus dicta blanditiis doloremque explicabo
-            quasi sunt vero optio cum aperiam vel consectetur! Laborum enim
-            accusantium atque, excepturi sapiente amet! Tenetur ducimus aut
-            commodi illum quidem neque tempora nam.
-          </p>
+      <div className="bg-light">
+        <div className="container py-5">
+          <div className="row h-100 align-items-center py-5">
+            <div className="col-md-6 col-sm-12">
+              <h1>Who are we ?</h1>
+              <p className="lead mb-0">
+                Shopkart is a leading e-commerce company offering a wide range
+                of products. With a user-friendly interface, secure payments,
+                and a vast network of sellers, Shopkart provides a seamless
+                shopping experience. They prioritize efficient logistics and
+                customer satisfaction.
+              </p>
+            </div>
+            <div className="col-md-6 col-sm-8 d-flex justify-content-center align-items-center">
+              <img
+                src="https://bootstrapious.com/i/snippets/sn-about/illus.png"
+                alt
+                style={{ width: "70%" }}
+                className="img-fluid img-responsive"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

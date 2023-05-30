@@ -1,25 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
-.contactus {
-  margin: 0;
-  padding: 0;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* ==================== */
-.product-link {
-  text-decoration: none !important;
-  color: black !important;
-}
 
-.cat-btn {
-  padding: 40px 0px;
-  font-size: 24px;
-  text-transform: uppercase;
-}
-.cat-btn:hover {
-  background-color: #434343;
-  color: white;
-}
+
+

@@ -100,45 +100,51 @@ const Cart = ({ title }) => {
       </Helmet>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1 className="text-center">
-              {auth?.token && auth?.user.name.toUpperCase()}
-            </h1>
+          <div className="col-md-12" style={{ fontSize: "0.8em" }}>
             <h3 className="text-center mt-2">
               {cart.length === 0 && `No Items`}
               {cart.length >= 1 &&
                 auth?.token &&
-                `Yayy! you have ${cart.length} products in your cart`}
+                `Yayy! you have ${cart.length} products in your cart ${
+                  auth?.token && auth?.user.name
+                }`}
               {cart.length >= 1 &&
                 !auth?.token &&
                 `Yayy! you have ${cart.length} products in your cart . Now Login to checkout`}
             </h3>
           </div>
         </div>
+
         <div className="row mt-5">
-          <div className="col-md-7">
+          <div className="col-md-7 mt-3">
+            {cart.length > 0 && (
+              <h3
+                className="text-center"
+                style={{ textDecoration: "underline" }}
+              >
+                Items List
+              </h3>
+            )}
             {cart?.map((item) => (
-              <div className="row card flex-row m-3 p-3" key={item._id}>
-                <div className="col-md-4 d-flex justify-content-center align-items-center">
+              <div className="row card flex-row m-2 p-2 shadow" key={item._id}>
+                <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
                   <img
                     src={`/api/v1/products/product-image/${item._id}`}
                     className="card-img-top product-image img-responsive"
-                    style={{ height: "250px" }}
+                    style={{ maxHeight: "150px", width: "100%" }}
                     alt={item.name}
                   />
                 </div>
-                <div className="flex-column card-body d-flex col-md-5">
+                <div className="col-md-6 col-sm-12 flex-column card-body d-flex justify-content-center  col-md-5 ">
                   <p className="card-title " style={{ fontWeight: "bold" }}>
                     {item.name}
                   </p>
-                  <p className="card-text">
-                    {item.description.substring(0,75) + "..."}
-                  </p>
+
                   <p> Price : ₹ {item.price}</p>
                   <button
                     type="button"
                     className="btn btn-danger"
-                    style={{ width: "20%" }}
+                    style={{ width: "5.8em" }}
                     onClick={() => {
                       handleRemove(item._id);
                     }}
@@ -149,23 +155,22 @@ const Cart = ({ title }) => {
               </div>
             ))}
           </div>
-          <div className="col-md-5">
+
+          <div className="col-md-5 mt-3" style={{ fontSize: "1em" }}>
             <h3 className="text-center" style={{ textDecoration: "underline" }}>
               Cart Details
             </h3>
 
-            <h3>Total : {handleTotal()}</h3>
+            <h3>
+              <span style={{ color: "#3cb13c" }}>Total</span> : {handleTotal()}
+            </h3>
             {auth?.user?.address && (
               <>
                 <h3 className="mt-3">Deliever to</h3>
-                <p> {auth?.user?.address} </p>
+                <p style={{ fontWeight: "600" }}> {auth?.user?.address} </p>
               </>
             )}
-            {auth?.token ? (
-              <div className="mt-3">
-                <button className="btn btn-warning">Checkout</button>
-              </div>
-            ) : (
+            {!auth?.token && (
               <>
                 <div className="mt-3">
                   <button
@@ -197,6 +202,7 @@ const Cart = ({ title }) => {
                   <button
                     className="btn btn-primary"
                     onClick={handlePayment}
+                    style={{ backgroundColor: "#386bc0" }}
                     disabled={loading || !instance || !auth?.user}
                   >
                     {loading ? "Wait ..." : "Make Payment"}

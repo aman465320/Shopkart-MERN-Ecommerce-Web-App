@@ -31,7 +31,7 @@ const Orders = ({ title }) => {
         <title>{title} </title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div className="container-fluid mt-2 p-3">
+      <div className="mt-2 p-1">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
@@ -43,7 +43,7 @@ const Orders = ({ title }) => {
             {orders.map((item, idx) => {
               return (
                 <>
-                  <div className="mt-5 col-md-10">
+                  <div className="my-5">
                     <div>
                       <div>
                         <table class="table">
@@ -73,32 +73,29 @@ const Orders = ({ title }) => {
                       </div>
                     </div>
 
-                    <div className="col-md-9">
+                    <div className="d-flex align-items-center justify-content-center flex-column">
                       {item?.products?.map((product, prodIdx) => (
                         <div
-                          className="row card flex-row m-3 p-3"
+                          className="row card flex-row m-1 p-2 shadow"
+                          style={{ width: "70%" }}
                           key={product._id}
                         >
-                          <h5>{prodIdx + 1}</h5>
-                          <div className="col-md-4 d-flex justify-content-center align-items-center">
+                          <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
                             <img
                               src={`/api/v1/products/product-image/${product._id}`}
                               className="card-img-top product-image img-responsive"
-                              style={{ height: "200px" }}
+                              style={{ maxHeight: "150px", width: "100%" }}
                               alt={product.name}
                             />
                           </div>
-
-                          <div className="flex-column card-body d-flex col-md-5">
+                          <div className="col-md-6 col-sm-12 flex-column card-body d-flex justify-content-center  col-md-5 ">
                             <p
                               className="card-title "
                               style={{ fontWeight: "bold" }}
                             >
                               {product.name}
                             </p>
-                            <p className="card-text">
-                              {product.description.substring(0, 50) + "..."}
-                            </p>
+
                             <p> Price : ₹ {product.price}</p>
                           </div>
                         </div>

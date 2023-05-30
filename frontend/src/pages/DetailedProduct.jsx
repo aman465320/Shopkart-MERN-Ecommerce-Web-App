@@ -7,6 +7,9 @@ import { toast } from "react-hot-toast";
 import { List } from "antd";
 import { useAuth } from "../context/global";
 import { FaUserAlt } from "react-icons/fa";
+
+import "../styles/index.css";
+
 const DetailedProduct = ({ title }) => {
   const [auth, setAuth] = useAuth();
   const params = useParams();
@@ -96,35 +99,51 @@ const DetailedProduct = ({ title }) => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       {/* {JSON.stringify(reviews, null, 5)} */}
-      <div className="row container mt-2">
-        <div className="col-md-6">
+      <div className="row container mt-2" style={{ width: "100%" }}>
+        <h1 className="text-center my-5">Product Details</h1>
+        <div className="col-md-5">
           <img
             src={`/api/v1/products/product-image/${product._id}`}
-            className="card-img-top"
+            className="card-img-top mb-3"
             alt={product.name}
-            height="300"
+            height="270px"
             width="300px"
             style={{ objectFit: "scale-down" }}
           />
         </div>
-        <div className="col-md-6 ">
-          <h1 className>Product Details</h1>
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
-          <h6>Price : ₹ {product.price}</h6>
-          <h6>Category : {product?.category?.name}</h6>
-
-          <button
-            className="btn btn-warning ms-2"
-            onClick={() => {
-              setCart([...cart, product]);
-              toast.success("Item added to cart");
-              // to prevent login data form reload we use local storage
-              localStorage.setItem("cart", JSON.stringify([...cart, product]));
-            }}
-          >
-            Add to Cart
-          </button>
+        <div className="col-md-7">
+          <p>
+            <span className="product-property">Name : </span>
+            {product.name}
+          </p>
+          <p>
+            <span className="product-property">Description : </span>
+            {product.description}
+          </p>
+          <p>
+            <span className="product-property">Price : </span>₹{product.price}
+          </p>
+          <p>
+            <span className="product-property">Category : </span>
+            {product?.category?.name}
+          </p>
+          <p>
+            <button
+              className="btn btn-warning"
+              onClick={() => {
+                setCart([...cart, product]);
+                toast.success("Item added to cart");
+                // to prevent login data form reload we use local storage
+                localStorage.setItem(
+                  "cart",
+                  JSON.stringify([...cart, product])
+                );
+              }}
+              style={{ backgroundColor: "#f4d06f" }}
+            >
+              Add to Cart
+            </button>
+          </p>
         </div>
       </div>
       <hr />
@@ -133,14 +152,14 @@ const DetailedProduct = ({ title }) => {
         <>
           <div className="d-flex justify-content-center align-items-center flex-column mt-5">
             <form onSubmit={handleReview}>
-              <div className="mb-2">
-                <h1 className="text-center">Add a review</h1>
+              <div className="mb-2 form-group">
+                <h1 className="text-center ">Add a review</h1>
                 <textarea
-                  className="text p-3"
+                  className="text p-2 form-control"
                   name="review"
                   id=""
-                  cols="60"
-                  rows="3"
+                  cols= "55"
+                  rows="4"
                   placeholder="Enter Review"
                   value={review}
                   onChange={(e) => {
@@ -168,7 +187,7 @@ const DetailedProduct = ({ title }) => {
           to add a review
         </h1>
       )}
-
+<hr />
       {reviews.length > 0 && (
         <>
           <div className="mt-3">
@@ -197,43 +216,53 @@ const DetailedProduct = ({ title }) => {
           </div>
         </>
       )}
-
+      <hr />
       <div className="row">
         <h3 className="mt-3">Similar Products:</h3>
         {similarProducts.length === 0 && (
           <p className="text-center">"No similar products found"</p>
         )}
-        <div className="d-flex flex-wrap flex-row ">
+        <div className="d-flex flex-wrap flex-row justify-content-center">
           {similarProducts.map((item) => (
             <div
               key={item._id}
-              className="card m-3"
-              style={{ width: "18rem", height: "540px" }}
+              className="card m-3 p-2 shadow"
+              style={{ width: "20rem", height: "450px" }}
             >
+              {/* <div className="img-div"> */}
               <img
                 src={`/api/v1/products/product-image/${item._id}`}
-                style={{ maxHeight: "50%" }}
-                className="card-img-top product-image img-responsive"
+                className="card-img-top product-image img-responsive m-auto"
                 alt={item.name}
+                style={{ maxHeight: "200px", width: "90%" }}
               />
-              <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
-                <p className="card-text">
+              {/* </div> */}
+              <div className="card-body d-flex justify-content-center flex-column">
+                <h5
+                  className="card-title"
+                  style={{ fontSize: "1em", fontWeight: "bold" }}
+                >
+                  {item.name}
+                </h5>
+                <p className="card-text" style={{ fontSize: "1rem" }}>
                   {item.description.substring(0, 50) + "..."}
                 </p>
-                <p> ₹ {item.price}</p>
+                <p style={{ fontWeight: "Bold" }}>
+                  <span className="price">Price : </span>₹ {item.price}
+                </p>
               </div>
               <div className="d-flex justify-content-center align-items-center mb-3">
                 <button
-                  className="btn btn-primary ms-2"
+                  className="btn btn-primary ms-2 prod-btn"
                   onClick={() => {
                     navigate(`/detailed-product/${item._id}`);
                   }}
+                  style={{ backgroundColor: "#3E7CB1" }}
                 >
                   View Details
                 </button>
                 <button
-                  className="btn btn-warning ms-2"
+                  className="btn btn-warning ms-2 prod-btn"
                   onClick={() => {
                     setCart([...cart, item]);
                     toast.success("Item added to cart");
@@ -242,6 +271,9 @@ const DetailedProduct = ({ title }) => {
                       "cart",
                       JSON.stringify([...cart, item])
                     );
+                  }}
+                  style={{
+                    backgroundColor: "#F4D06F",
                   }}
                 >
                   Add to Cart

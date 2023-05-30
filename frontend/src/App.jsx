@@ -10,7 +10,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Policy from "./pages/Policy";
 import Error from "./pages/Error";
 
 // auth imports
@@ -107,7 +106,6 @@ const App = () => {
 
           <Route path="/contact" element={<Contact title={`Contact us`} />} />
 
-          <Route path="/policy" element={<Policy title={`Policy`} />} />
 
           {/* SEARCH PRODUCT PAGE */}
           <Route path="/search" element={<Search title={`Search`} />} />

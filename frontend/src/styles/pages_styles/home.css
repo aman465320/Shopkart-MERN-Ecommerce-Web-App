@@ -23,6 +23,17 @@
   object-fit: scale-down;
 }
 
-.price{
+.price {
   color: rgb(60, 177, 60);
+}
+
+.carousal-div,
+.carousel-slider,
+.carousel-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
 }

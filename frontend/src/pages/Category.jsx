@@ -43,37 +43,48 @@ const Category = ({ title }) => {
               ? "No products found"
               : `Found ${products.length} products`}
           </h5>
-          <div className="d-flex flex-wrap flex-row mt-5">
+          <div className="d-flex flex-wrap flex-row mt-5 justify-content-center">
+
             {products.map((item) => (
               <div
                 key={item._id}
-                className="card m-3"
-                style={{ width: "18rem", height: "540px" }}
+                className="card m-3 p-2 shadow"
+                style={{ width: "20rem", height: "450px" }}
               >
+                {/* <div className="img-div"> */}
                 <img
                   src={`/api/v1/products/product-image/${item._id}`}
-                  style={{ maxHeight: "50%" }}
-                  className="card-img-top product-image img-responsive"
+                  className="card-img-top product-image img-responsive m-auto"
                   alt={item.name}
+                  style={{ maxHeight: "200px", width: "90%" }}
                 />
-                <div className="card-body">
-                  <h5 className="card-title">{item.name}</h5>
-                  <p className="card-text">
+                {/* </div> */}
+                <div className="card-body d-flex justify-content-center flex-column">
+                  <h5
+                    className="card-title"
+                    style={{ fontSize: "1em", fontWeight: "bold" }}
+                  >
+                    {item.name}
+                  </h5>
+                  <p className="card-text" style={{ fontSize: "1rem" }}>
                     {item.description.substring(0, 50) + "..."}
                   </p>
-                  <p> ₹ {item.price}</p>
+                  <p style={{ fontWeight: "Bold" }}>
+                    <span className="price">Price : </span>₹ {item.price}
+                  </p>
                 </div>
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <button
-                    className="btn btn-primary ms-2"
+                    className="btn btn-primary ms-2 prod-btn"
                     onClick={() => {
                       navigate(`/detailed-product/${item._id}`);
                     }}
+                    style={{ backgroundColor: "#3E7CB1" }}
                   >
                     View Details
                   </button>
                   <button
-                    className="btn btn-warning ms-2"
+                    className="btn btn-warning ms-2 prod-btn"
                     onClick={() => {
                       setCart([...cart, item]);
                       toast.success("Item added to cart");
@@ -83,12 +94,16 @@ const Category = ({ title }) => {
                         JSON.stringify([...cart, item])
                       );
                     }}
+                    style={{
+                      backgroundColor: "#F4D06F",
+                    }}
                   >
                     Add to Cart
                   </button>
                 </div>
               </div>
             ))}
+
           </div>
         </div>
       </div>

@@ -7,7 +7,8 @@ import { Prices } from "../components/Filters/Prices";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
-
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Home = ({ title }) => {
   const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
@@ -100,8 +101,40 @@ const Home = ({ title }) => {
         <title>{title} </title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div>
+      <div >
         {/* category filter */}
+        <div className="carousal-div mt-3 mb-5">
+          <div className="container-fluid">
+            <Carousel
+              infiniteLoop
+              autoPlay
+              showStatus={false}
+              showThumbs={false}
+              dynamicHeight
+            >
+              <div>
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/004/299/835/original/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg"
+                  alt="it1"
+                />
+              </div>
+              <div>
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/004/707/493/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
+                  alt="it1"
+                />
+              </div>
+              <div>
+                <img
+                  className="img img-responsive"
+                  src="https://static.vecteezy.com/system/resources/previews/011/871/820/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
+                  alt=""
+                />
+              </div>
+            </Carousel>
+          </div>
+        </div>
+
         <div className="row mt-3">
           <div className="col-md-3 ">
             <h3 className="text-center">Filter by Category</h3>
@@ -148,24 +181,25 @@ const Home = ({ title }) => {
             {/* {JSON.stringify(checked, null, 5)}
             {JSON.stringify(radio, null, 5)} */}
             <h1 className="text-center mt-4">All products</h1>
-            <div className="d-flex flex-wrap flex-row ">
+            <div className="d-flex flex-wrap flex-row align-items-center justify-content-center ">
               {products.map((item) => (
                 <div
                   key={item._id}
                   className="card m-3 p-2 shadow"
-                  style={{ width: "18rem", height: "540px" }}
+                  style={{ width: "20rem", height: "450px" }}
                 >
                   {/* <div className="img-div"> */}
                   <img
                     src={`/api/v1/products/product-image/${item._id}`}
                     className="card-img-top product-image img-responsive m-auto"
                     alt={item.name}
+                    style={{ maxHeight: "200px", width: "90%" }}
                   />
                   {/* </div> */}
                   <div className="card-body d-flex justify-content-center flex-column">
                     <h5
                       className="card-title"
-                      style={{ fontSize: "1.2em", fontWeight: "bold" }}
+                      style={{ fontSize: "1em", fontWeight: "bold" }}
                     >
                       {item.name}
                     </h5>
