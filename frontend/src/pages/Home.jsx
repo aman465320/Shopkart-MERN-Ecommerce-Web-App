@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Pagination } from "antd";
-
 const Home = ({ title }) => {
   const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
@@ -95,18 +93,6 @@ const Home = ({ title }) => {
       console.log(error);
     }
   };
-
-  // pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 3;
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const productsToDisplay = products.slice(startIndex, endIndex);
 
   return (
     <>
@@ -196,18 +182,20 @@ const Home = ({ title }) => {
             {JSON.stringify(radio, null, 5)} */}
             <h1 className="text-center mt-4">All products</h1>
             <div className="d-flex flex-wrap flex-row align-items-center justify-content-center ">
-              {productsToDisplay.map((item) => (
+              {products.map((item) => (
                 <div
                   key={item._id}
                   className="card m-3 p-2 shadow"
                   style={{ width: "20rem", height: "450px" }}
                 >
+                  {/* <div className="img-div"> */}
                   <img
                     src={`/api/v1/products/product-image/${item._id}`}
                     className="card-img-top product-image img-responsive m-auto"
                     alt={item.name}
                     style={{ maxHeight: "200px", width: "90%" }}
                   />
+                  {/* </div> */}
                   <div className="card-body d-flex justify-content-center flex-column">
                     <h5
                       className="card-title"
@@ -253,14 +241,6 @@ const Home = ({ title }) => {
                 </div>
               ))}
             </div>
-            <Pagination
-              responsive
-              current={currentPage}
-              pageSize={pageSize}
-              total={products.length}
-              className="text-center"
-              onChange={handlePageChange}
-            />
           </div>
         </div>
       </div>
