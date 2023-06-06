@@ -46,7 +46,7 @@ const ForgetPassword = ({ title }) => {
           <div className="mb-3">
             <input
               type="email"
-              className="form-control"
+              className="form-control m-1"
               id="exampleInputEmail1"
               placeholder="Email"
               value={email}
@@ -59,7 +59,7 @@ const ForgetPassword = ({ title }) => {
           <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="form-control m-1"
               id="exampleInputPassword"
               placeholder="New Password"
               value={newPassword}
@@ -72,9 +72,9 @@ const ForgetPassword = ({ title }) => {
           <div className="mb-3">
             <input
               type="text"
-              className="form-control"
+              className="form-control m-1"
               id="exampleInputSecret"
-              placeholder="Enter Secret"
+              placeholder="Your favourite food(secert)"
               value={secret}
               onChange={(e) => {
                 setSecret(e.target.value);
