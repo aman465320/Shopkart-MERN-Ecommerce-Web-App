@@ -5,3 +5,29 @@
   color: black;
 }
 
+.card-div {
+  border-radius: 10%;
+}
+
+.review-container,
+.review-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ff3366;
+  text-align: center;
+  min-height: 3rem;
+}
+.review-text {
+  text-align: center;
+  font-size: 1rem;
+}
+.review-card-container {
+  overflow: hidden;
+  flex-wrap: wrap;
+}

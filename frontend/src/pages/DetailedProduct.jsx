@@ -158,7 +158,7 @@ const DetailedProduct = ({ title }) => {
                   className="text p-2 form-control"
                   name="review"
                   id=""
-                  cols= "55"
+                  cols="55"
                   rows="4"
                   placeholder="Enter Review"
                   value={review}
@@ -187,30 +187,27 @@ const DetailedProduct = ({ title }) => {
           to add a review
         </h1>
       )}
-<hr />
+      <hr />
       {reviews.length > 0 && (
         <>
-          <div className="mt-3">
-            <div className="p-2" style={{ width: "50%" }}>
-              <div>
-                <h2 className="mb-">All reviews</h2>
-                <List
-                  itemLayout="horizontal"
-                  dataSource={reviews}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <List.Item.Meta
-                        title={
-                          <>
-                            <FaUserAlt className="me-1" />
-                            {item.customer.name}
-                          </>
-                        }
-                        description={item.reviewText}
-                      />
-                    </List.Item>
-                  )}
-                />
+          <div className="my-5 review-container">
+            <div className="p-2 border-danger" style={{ width: "100%" }}>
+              <h2 className="text-center">All reviews</h2>
+              <div className="review-card-container">
+                {reviews.map((item) => (
+                  <div
+                    key={item._id}
+                    className="card m-3 p-2 shadow card-div"
+                    style={{ width: "18rem", minHeight: "15rem" }}
+                  >
+                    <div className="card-body ">
+                      <h5 className="review-title mt-3">
+                        {item.customer.name}
+                      </h5>
+                      <p className="review-text">{item.reviewText}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
